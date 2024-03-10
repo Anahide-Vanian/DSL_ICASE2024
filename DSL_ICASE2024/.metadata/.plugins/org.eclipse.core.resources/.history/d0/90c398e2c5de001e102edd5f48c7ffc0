@@ -1,0 +1,32 @@
+from behave import when, given, then
+import behave
+from behave.model_core import Status
+import time
+import environment as env 
+import os
+import json
+
+
+@given(u'the object "{identifier}" is "{state}"')
+@then(u'the object "{identifier}" is "{state}"')
+def step_impl(context, identifier : str, state):
+    if(state == "fixed"):
+        print("Object ready to be grabbed")
+    if(state == "placed"):
+        print("Object placed")
+
+
+@when('the robot "{identifier}" moves to position "{position}"')
+def step_when(context, identifier : str, position):
+    if(position[:3] == "POS"):
+        moveRobotFromObj2Place(context)
+    if(position == "POS1" or position == "Bucket"):
+
+
+@when(u'the robot "{identifier1}" {action} the object "{identifier2}"')
+def step_impl(context, identifier1 :str, identifier2:str, action):
+    print("Object grabbed")
+    pass
+
+
+

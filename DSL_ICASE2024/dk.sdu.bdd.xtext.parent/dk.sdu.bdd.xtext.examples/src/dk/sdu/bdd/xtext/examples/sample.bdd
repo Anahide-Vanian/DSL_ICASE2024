@@ -1,0 +1,20 @@
+model sample
+
+declarative entity robot {
+     actions: moves, grabs
+     properties: position
+}
+
+declarative entity object {
+     states: fixed, placed
+     properties: position
+}
+
+
+Scenario: "Pick and Place trajectory"
+Given the object "Object" is fixed 
+When the robot "Robot" moves to position "POS10"
+And the robot "Robot" grabs the object "Object"
+And the robot "Robot" moves to position "Bucket"
+Then the object "Object" is placed
+
